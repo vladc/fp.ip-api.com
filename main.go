@@ -157,6 +157,7 @@ func QueryHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	if path == "/json" || path == "/json/" {
 		w.Header().Set("Connection", "close")
+		time.Sleep(25 * time.Millisecond)
 		o := Lookup(r)
 		jsonBytes, _ := json.MarshalIndent(o, "", "	")
 		if cb := r.FormValue("callback"); len(cb) > 0 {
